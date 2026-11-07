@@ -35,7 +35,7 @@
 ## Module 2: Conjunction Assessment & Collision Probability ($P_c$)
 
 ### Technical Summary
-- **Function**: Predicts close encounters between operational satellites and orbital debris within a 7-day screening window and calculates bivariate collision probability.
+- **Function**: Predicts close encounters between operational satellites and orbital debris within a 24-hour screening window and calculates bivariate collision probability.
 - **Key Equations**:
   - Foster-1992 2-D Encounter Plane Integral:
     $$P_c = \frac{1}{2\pi \sqrt{\det \mathbf{C}_{2D}}} \iint_{\text{Disk}(R_{\text{HBR}})} \exp\left(-\frac{1}{2}(\mathbf{r} - \mathbf{m})^T \mathbf{C}_{2D}^{-1} (\mathbf{r} - \mathbf{m})\right) d^2\mathbf{r}$$
@@ -46,7 +46,7 @@
 - **Biggest Limitation**: Synthetic RTN covariance must be used because public element sets omit covariance data.
 - **Validation**: 
   1. Analytic check: For zero miss vector ($\mathbf{m} = \mathbf{0}$) and isotropic covariance $\sigma^2 \mathbf{I}$, numerical $P_c$ agreed with $1 - \exp(-R^2 / 2\sigma^2)$ to within $10^{-7}$.
-  2. Monte Carlo validation: Compared with 50,000 sampled Gaussian points.
+  2. Monte Carlo validation: Compared with 300,000 sampled Gaussian points (`tests/test_conjunction_math.py`).
   3. CelesTrak SOCRATES cross-validation engine.
 
 ### Top 3 Interview Questions & Model Answers
